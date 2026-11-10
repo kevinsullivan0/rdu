@@ -2,6 +2,16 @@
 
 RDU 0.3.0 is a Rust disk usage browser for macOS. Its Ratatui interface provides live scan statistics, directory navigation, usage bars, sorting, filters, offline snapshots and staged permanent deletion. Native bulk metadata reads reduce per-file metadata calls; a portable Unix backend is also available.
 
+RDU is currently an experimental personal tool. Intermittent runtime errors are tracked in [issue #1](https://github.com/kevinsullivan0/rdu/issues/1); investigation is deferred.
+
+## Speed
+
+Across four warm-cache workloads on one Intel Mac using APFS, an RDU build with the delivered scanner's source was **1.65–3.28× faster than GDU 5.39.0** in the tested correct full-tree, 16-worker mode. These whole-command timings include retained-tree construction, accounting, output and shutdown.
+
+**dua 3.0.0 and Diskus 0.9.0 were faster on the full SDK workload**, and dua generally used less memory. GDU's tested mode is not established as its fastest on every input. The results cover finite warm-cache samples on one platform; they do not establish comparative interactive-browser latency. The final privacy-remapped executable was verified but not independently retimed.
+
+See the [complete benchmark results, memory measurements and limitations](evidence/performance/performance.md).
+
 ## Build and run
 
 Rust 1.88 or newer is required. The selected release was checked with Rust 1.94.1 on Intel macOS/APFS. Apple Silicon and Linux have not been runtime-verified; Windows is unsupported. Linux uses the portable scanner and cannot delete.
