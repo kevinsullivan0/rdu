@@ -1,0 +1,121 @@
+{
+  "format": "rdu-final-fallback-public-evidence-v1",
+  "original_private_raw_sha256": "5e70bd8f7fbe262885d9149a336c976d7a979b3ca2098d770c3224ea9f758d57",
+  "source_equivalence_public_head": "ea5969853f52770e627dfb60333194a182f9edc2",
+  "source_equivalence_private_control_commit": "88dc2df52e20a8acd2bfdd722fdbffbf635ce6b4",
+  "runtime_cargo_byte_equivalence_verified": true,
+  "numeric_samples_summaries_original26_contrasts_unchanged_by_redaction": true,
+  "derived_current_contrasts": 20,
+  "new_scanner_or_oracle_children": 0,
+  "final_remapped_fallback_independently_timed": false,
+  "original_B_bundle_preserved": true,
+  "helper_provenance": {
+    "run_product_final.py": {
+      "sha256": "1fe7e00dc0bd32f4fcdd733386514dfe128bdecdf0103f744df425e502df70e6",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "product_final_contract.py": {
+      "sha256": "cd53d78f0877371f5e54771c792ca2568aa26e7779b383b53103925f69d9a7ab",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "harness.py": {
+      "sha256": "b4eb7ef178dbc1004b06a56e7d94c27192d847139de4b0f94a398b22f7da7a97",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "paired.py": {
+      "sha256": "c3819ed022baa10a041b1363f3751e6809009218e281ed7bac826935dc3d50fd",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "paired_sparse.py": {
+      "sha256": "59fabd405a5a69aa472e92a32861e4fa8d6e9cdd47a326f24ff41dcf477d2393",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "paired_stats.py": {
+      "sha256": "8f02d6e6fbd854d2d8da87f2dad544ab1d3d8aa9407347d3595dae35feef04a3",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "next_controls.py": {
+      "sha256": "ef3596354146e736033e0f563c31516d5a7017b49b797aeb4c2869f3e6955903",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "output_policy.py": {
+      "sha256": "059c8f94b0baecdc0f7cac11b2f4d60d5324583d77c3bd905adc49b5205e349e",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "product_baseline_contract.py": {
+      "sha256": "4924827a273fd96400f0566148480b4f8af85f79cc50e45826e8a9cba0aa82bd",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "retained_output.py": {
+      "sha256": "3c31641e0d55034cb96333cd75e870f5bb9b8a8d2e990bf073e071a972d14711",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "retained_real.py": {
+      "sha256": "0dbde7a3099a670b82014d3044a387a3ef5682cf19f7e9fae28dfc4a01b41b1d",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "runtime_observations.py": {
+      "sha256": "f5d1a2024e3d868c9547ac747090e943d78e1a7457c6df9085058eb4578183a5",
+      "source": "Exact private bench helper used by sealed final campaign"
+    },
+    "empty-gdu.yaml": {
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "source": "Exact private bench helper used by sealed final campaign"
+    }
+  },
+  "portable_uneven_plan": {
+    "original_private_generator_sha256": "80c6174769ef591fe26178387a168b9817d4122a9f64da75aca2a03dde76103a",
+    "plan_sha256": "98de279d7e1cf489e3306e3dbeed4c364cb964f901ba250335b7bb28a3206187",
+    "seed": 2026111051,
+    "plan_function_exactly_exported": true
+  },
+  "sha256": {
+    "performance.md": "81bcdd1f37b0f1fdb346f143bc288ce5e4ad0383241ee26b91884ecde0ffd11c",
+    "performance.json": "73690fa60e9c989278a780085c58b3c08affce728c941a72907ace545e097510",
+    "REPRODUCE.md": "d6d928b5fd89a68c915621156e49519873b6e7883b378e41de4cab081e89559e",
+    "bench/harness.py": "b4eb7ef178dbc1004b06a56e7d94c27192d847139de4b0f94a398b22f7da7a97",
+    "bench/product_baseline_contract.py": "4924827a273fd96400f0566148480b4f8af85f79cc50e45826e8a9cba0aa82bd",
+    "bench/paired_sparse.py": "59fabd405a5a69aa472e92a32861e4fa8d6e9cdd47a326f24ff41dcf477d2393",
+    "bench/run_product_final.py": "1fe7e00dc0bd32f4fcdd733386514dfe128bdecdf0103f744df425e502df70e6",
+    "bench/retained_output.py": "3c31641e0d55034cb96333cd75e870f5bb9b8a8d2e990bf073e071a972d14711",
+    "bench/output_policy.py": "059c8f94b0baecdc0f7cac11b2f4d60d5324583d77c3bd905adc49b5205e349e",
+    "bench/product_final_contract.py": "cd53d78f0877371f5e54771c792ca2568aa26e7779b383b53103925f69d9a7ab",
+    "bench/paired_stats.py": "8f02d6e6fbd854d2d8da87f2dad544ab1d3d8aa9407347d3595dae35feef04a3",
+    "bench/uneven_plan.py": "5c40a541254a6f096d16de1663d750ff8ff47461bd0c393ca27b199f87163b5b",
+    "bench/next_controls.py": "ef3596354146e736033e0f563c31516d5a7017b49b797aeb4c2869f3e6955903",
+    "bench/runtime_observations.py": "f5d1a2024e3d868c9547ac747090e943d78e1a7457c6df9085058eb4578183a5",
+    "bench/retained_real.py": "0dbde7a3099a670b82014d3044a387a3ef5682cf19f7e9fae28dfc4a01b41b1d",
+    "bench/paired.py": "c3819ed022baa10a041b1363f3751e6809009218e281ed7bac826935dc3d50fd",
+    "bench/empty-gdu.yaml": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "bench/skew_plan.py": "4b838f9911e3302b40cda659b1801202489c1bd0b7695b85c228f681f5407603"
+  },
+  "path_secret_signature_check": true,
+  "portable_skew_plan": {
+    "seed": 2026111103,
+    "preceding_burst_draws": 32768,
+    "original_private_generator_sha256": "9ae7852dd17a356576676ebfc8f54bd78d827636ec091fd4927b66aea3c4f19c",
+    "source": "Direct path recipe from original generate_next.py, preserving RNG consumption; no new fixture or timing"
+  },
+  "publication_paths": {
+    "performance.md": "evidence/performance/performance.md",
+    "performance.json": "evidence/performance/performance.json",
+    "REPRODUCE.md": "evidence/performance/REPRODUCE.md",
+    "bench/harness.py": "bench/harness.py",
+    "bench/product_baseline_contract.py": "bench/product_baseline_contract.py",
+    "bench/paired_sparse.py": "bench/paired_sparse.py",
+    "bench/run_product_final.py": "bench/run_product_final.py",
+    "bench/retained_output.py": "bench/retained_output.py",
+    "bench/output_policy.py": "bench/output_policy.py",
+    "bench/product_final_contract.py": "bench/product_final_contract.py",
+    "bench/paired_stats.py": "bench/paired_stats.py",
+    "bench/uneven_plan.py": "bench/uneven_plan.py",
+    "bench/next_controls.py": "bench/next_controls.py",
+    "bench/runtime_observations.py": "bench/runtime_observations.py",
+    "bench/retained_real.py": "bench/retained_real.py",
+    "bench/paired.py": "bench/paired.py",
+    "bench/empty-gdu.yaml": "bench/empty-gdu.yaml",
+    "bench/skew_plan.py": "bench/skew_plan.py"
+  },
+  "original_bundle_manifest_sha256": "0f8bef9722dd9866561ad2d701e19de22b54e620f66d505a12e5d282ec769d9d",
+  "publication_manifest_transformation": "Add explicit relocated publication_paths and original manifest digest; all payload files copied byte for byte."
+}

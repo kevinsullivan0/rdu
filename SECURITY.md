@@ -1,6 +1,6 @@
 # Security policy and audit scope
 
-RDU 0.3 provides explicitly confirmed permanent deletion to an ordinary-user metadata browser. Treat filenames, symlink targets, directory layouts, metadata, imported display data and terminal dimensions as untrusted. The selected root path is user input. The operating system, kernel filesystem ABI, libc and an uncompromised terminal emulator are trusted. A fresh audit of this frozen source is pending. This document defines security scope and does not claim audit completion.
+RDU 0.3 provides explicitly confirmed permanent deletion to an ordinary-user metadata browser. Treat filenames, symlink targets, directory layouts, metadata, imported display data and terminal dimensions as untrusted. The selected root path is user input. The operating system, kernel filesystem ABI, libc and an uncompromised terminal emulator are trusted. The selected runtime has the static source coverage described below; this policy also states the limits of that coverage.
 
 Security objectives are to avoid symlink traversal and file-content reads, avoid terminal escape injection from names, retain Rust memory safety around checked native parsing, bound workers/descriptors and retained entries, surface partial results, restore terminal state on handled exits, and permanently remove only independently reviewed live objects through protected slots. There is no product shell hook, network client/server or persistent privileged service. Offline/imported display data cannot mint deletion authority; a fresh live scan is required.
 
@@ -34,6 +34,8 @@ Limitations: the third-party crate source and a fresh vulnerability-advisory dat
 
 Report issues with the version, source/binary hash, OS/filesystem and a minimal synthetic reproduction. Do not include private filenames or user data. A public vulnerability-report endpoint is not configured.
 
-The selected runtime is bound to its source in `evidence/publication/source-manifest.json`. Final frozen-source security results will be added with their exact review scope. Historical research audits are not represented as coverage of this publication commit.
+The selected runtime is bound to its source in [the publication source manifest](evidence/publication/source-manifest.json). A Standard Codex Security source scan of `e591e3f1992fef70039dc5ea9b578c84d6aa3c93` completed with zero findings: 84 full-content reviewed files and 198 notice-only files, with all 282 classified and credential-reviewed. The selected simpler scanner is covered by a separate zero-finding static diff review of `e591e3f..ea5969853f52770e627dfb60333194a182f9edc2`.
+
+Read the [Standard report](evidence/security/standard-report.md), [fallback diff report](evidence/security/fallback-report.md) and [transformation provenance](evidence/security/provenance.json) together. These are clearly labeled derived publication copies; authoritative sealed originals remain unchanged privately. Later result-documentation and final benchmark-helper revisions fall outside those immutable scan scopes; helper provenance is recorded separately in the performance manifest. These reviews do not certify the executable or establish that software is vulnerability-free. Product, deletion, terminal and packaging checks have separate receipts.
 
 The optional `profile` Cargo feature and examples are developer diagnostics. Use one diagnostic scan at a time; concurrent resets/scans can mix telemetry. The normal CLI does not enable these diagnostics.

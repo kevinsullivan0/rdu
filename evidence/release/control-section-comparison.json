@@ -1,0 +1,22 @@
+{
+  "timed_control_sha256": "3fb89b66e9112d20207b8e7a4b0ff9c8d38323d662f475f999527626fb23fe33",
+  "release_sha256": "5741f105c72f32a1f51f9a5844ddf2397837fd1ea8b8bdda53ac4ca1042b524e",
+  "same_size": true,
+  "section_equal": {
+    "__TEXT,__text": false,
+    "__TEXT,__stubs": true,
+    "__TEXT,__stub_helper": true,
+    "__TEXT,__cstring": false,
+    "__TEXT,__gcc_except_tab": true,
+    "__TEXT,__const": true,
+    "__TEXT,__unwind_info": false,
+    "__TEXT,__eh_frame": false,
+    "__DATA,__got": false,
+    "__DATA,__la_symbol_ptr": true,
+    "__DATA,__const": false,
+    "__DATA,__data": false,
+    "__DATA,__thread_vars": true,
+    "__DATA,__thread_data": true
+  },
+  "scope": "Static section identity only; release not independently retimed; compiler paths remapped"
+}

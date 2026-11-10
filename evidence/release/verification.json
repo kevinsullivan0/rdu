@@ -1,0 +1,103 @@
+{
+  "format": "rdu-release-checks-v1",
+  "build_source_commit": "ea5969853f52770e627dfb60333194a182f9edc2",
+  "binary_sha256": "5741f105c72f32a1f51f9a5844ddf2397837fd1ea8b8bdda53ac4ca1042b524e",
+  "binary_bytes": 1340928,
+  "target": "x86_64-apple-darwin",
+  "normal_release_features": true,
+  "rust_test_pass_count": 123,
+  "rust_test_result_group_counts": [
+    51,
+    1,
+    6,
+    2,
+    14,
+    9,
+    15,
+    3,
+    2,
+    1,
+    3,
+    11,
+    5,
+    0
+  ],
+  "rust_tests_failed": 0,
+  "strict_all_targets_all_features_clippy": "passed",
+  "normal_release_build": "passed",
+  "owned_executable_checks": 18,
+  "owned_terminal_and_confirmed_deletion_fixture_suite": "passed",
+  "final_binary_privacy": "passed, all checked signature counts zero",
+  "real_sdk_browser_observation": {
+    "passed": true,
+    "count": 1,
+    "read_only": true,
+    "nodes": 49342,
+    "loading_milliseconds": 14.25,
+    "first_usable_frame_milliseconds": 209.65,
+    "quit_to_exit_milliseconds": 43.63,
+    "total_milliseconds": 255.91,
+    "navigation": "Validated j/k roundtrip",
+    "restoration": "Cursor, alternate screen and master terminal modes restored",
+    "errors": 0,
+    "scope": "One functional observation, not a comparative benchmark or confidence estimate."
+  },
+  "functional_fixture_policy": "Owned disposable fixtures only; no real user data deleted. Real SDK observation is read-only.",
+  "timing_scope": "Selected runtime/Cargo source equals integrated88 control. Final remapped fallback executable not independently retimed. PTY fixture timings and one SDK observation are functional evidence, not a browser benchmark.",
+  "tests_log_original_sha256": "b3e486c7c1c2ece397123055594d98b0e34ff41cf84c8476d03bc353314afe4f",
+  "clippy_log_original_sha256": "c79b7f2c0518ef5d4658e1e077f9d5571b2732a9ec7c3b4698ba670f29af4db4",
+  "raw_build_logs": "Private originals retained; path-bearing compiler/process logs are not published. Counts summarized from original test result lines.",
+  "artifact_transformation_provenance": [
+    {
+      "published_path": "evidence/release/build-freeze.json",
+      "original_sha256": "be242a4c5d80dc12cee37e1212ee60a663451221bbc1fd3bdd04d73297070a0a",
+      "published_sha256": "7575dfa2c633482684173a4a19d5556b2e94332e22cde0df72c745a37576ea89",
+      "original_bytes": 4444,
+      "published_bytes": 4230,
+      "transformation": "Deterministic private home/workspace/build/cache/temp and known personal identity replacement with named placeholders; JSON numeric, boolean and null values unchanged. Originals preserved separately; derived copy is not the authoritative sealed original."
+    },
+    {
+      "published_path": "evidence/release/binary-checks.json",
+      "original_sha256": "d5f2eafab0ae35511ee87295367755f3316f54fe943fb50bf8100ac7349db4af",
+      "published_sha256": "d5f2eafab0ae35511ee87295367755f3316f54fe943fb50bf8100ac7349db4af",
+      "original_bytes": 4104,
+      "published_bytes": 4104,
+      "transformation": "Deterministic private home/workspace/build/cache/temp and known personal identity replacement with named placeholders; JSON numeric, boolean and null values unchanged. Originals preserved separately; derived copy is not the authoritative sealed original."
+    },
+    {
+      "published_path": "evidence/release/terminal-fixtures.json",
+      "original_sha256": "f2c97a354c214e4f4b19d4c98b0b3a715ff108646fcacc7c321936e9ba3b064d",
+      "published_sha256": "f2c97a354c214e4f4b19d4c98b0b3a715ff108646fcacc7c321936e9ba3b064d",
+      "original_bytes": 922,
+      "published_bytes": 922,
+      "transformation": "Deterministic private home/workspace/build/cache/temp and known personal identity replacement with named placeholders; JSON numeric, boolean and null values unchanged. Originals preserved separately; derived copy is not the authoritative sealed original."
+    },
+    {
+      "published_path": "evidence/release/product-verification.json",
+      "original_sha256": "a0a503cbeb5d0e290a98fab57ae964988d17156e304ffc5703067f3acea9a781",
+      "published_sha256": "a0a503cbeb5d0e290a98fab57ae964988d17156e304ffc5703067f3acea9a781",
+      "original_bytes": 387,
+      "published_bytes": 387,
+      "transformation": "Deterministic private home/workspace/build/cache/temp and known personal identity replacement with named placeholders; JSON numeric, boolean and null values unchanged. Originals preserved separately; derived copy is not the authoritative sealed original."
+    },
+    {
+      "published_path": "evidence/release/sdk-usable-browser.json",
+      "original_sha256": "b3f6b83ce6566ed5aa8d9c918bbeb3752e8a407a295a336f3d06dbf3c27c38ca",
+      "published_sha256": "b3f6b83ce6566ed5aa8d9c918bbeb3752e8a407a295a336f3d06dbf3c27c38ca",
+      "original_bytes": 5562,
+      "published_bytes": 5562,
+      "transformation": "Deterministic private home/workspace/build/cache/temp and known personal identity replacement with named placeholders; JSON numeric, boolean and null values unchanged. Originals preserved separately; derived copy is not the authoritative sealed original."
+    },
+    {
+      "published_path": "evidence/release/control-section-comparison.json",
+      "original_sha256": "814a0fea07a36cb0f2609f0863a9b6477e8ae551208c5af760c8e05c64a064ab",
+      "published_sha256": "814a0fea07a36cb0f2609f0863a9b6477e8ae551208c5af760c8e05c64a064ab",
+      "original_bytes": 775,
+      "published_bytes": 775,
+      "transformation": "Deterministic private home/workspace/build/cache/temp and known personal identity replacement with named placeholders; JSON numeric, boolean and null values unchanged. Originals preserved separately; derived copy is not the authoritative sealed original."
+    }
+  ],
+  "remaining_delivery_checks": "Archive integrity/extracted-source rebuild, user installation/PATH, GitHub publication and safe cleanup are separate delivery receipts.",
+  "machine_code_comparison": "Compiler path remapping changes machine TEXT relative to timed control. Runtime/Cargo source equality is verified; executable byte/machine-code identity and final-artifact timing are not claimed.",
+  "build_freeze_status_note": "Build-freeze status was captured before later checks; this verification receipt records completed functional/privacy/source-review checks. Packaging/install/publication remain separately verified delivery operations."
+}

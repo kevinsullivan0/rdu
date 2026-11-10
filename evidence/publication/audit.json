@@ -1,0 +1,26 @@
+{
+  "format": "rdu-publication-audit-v1",
+  "source_runtime_commit": "ea5969853f52770e627dfb60333194a182f9edc2",
+  "source_equivalent_private_commit": "88dc2df52e20a8acd2bfdd722fdbffbf635ce6b4",
+  "files": 307,
+  "bytes": 2984541,
+  "runtime_cargo_files_exact": 23,
+  "notice_packages": 100,
+  "notice_payloads_verified": 198,
+  "issues": [],
+  "limits": "Static whole-tree/history enumeration and byte/hash/structure checks plus explicit allowlist. Bounded credential signatures do not prove absence of every possible encoded secret. Sealed source reviews and runtime/product/package checks are separately scoped.",
+  "scope": "Whole curated payload enumeration/read; source/Cargo equivalence; all published provenance hashes/bytes; dependency notices; JSON/TOML/Python syntax; local Markdown references; complete sanitized publication history metadata/blobs. Rechecked after final curation commit; private original history retained and excluded.",
+  "inventory_sha256": "af1b9ec6179d5cb9d4c37e0dbe5bf4dae6627d18acf0fb5a679d724093366e0a",
+  "history_policy": "Fresh sanitized project history only; generic RDU contributor identity. No private research history ancestry.",
+  "original_private_history_review": {
+    "commits_reviewed": 131,
+    "reachable_blobs_reviewed": 1115,
+    "personal_home_indicator_blobs": 185,
+    "known_identity_indicator_blobs": 182,
+    "local_workspace_indicator_blobs": 227,
+    "credential_signature_hits": 0,
+    "action": "Preserved privately; excluded from new publication repository."
+  },
+  "final_binary_sha256": "5741f105c72f32a1f51f9a5844ddf2397837fd1ea8b8bdda53ac4ca1042b524e",
+  "final_binary_privacy_passed": true
+}

@@ -1,0 +1,93 @@
+{
+  "source_commit": "ea5969853f52770e627dfb60333194a182f9edc2",
+  "source_repository": "<PUBLICATION_ROOT>",
+  "runtime_and_cargo_sha256": {
+    "Cargo.lock": "f42af0b608508feb2de7b3127f586355502a17f3707c3379c5efd38fa3c38399",
+    "Cargo.toml": "bd3a411ad6785f80b5c3f407deaaed1557a2d0d26bf24ad5819c2288fb07ea22",
+    "src/cli.rs": "bc4120ce8508efd7428c266e54c450ecb997a89af83062bb934d7fec4766c80e",
+    "src/cli/config.rs": "3e6a29d92d7a0f17cbe45be9482b0d4ca4f2772be953528db3eb09a540249a4c",
+    "src/delete.rs": "e170f386906efa482a824629e023fdbcaacd98349c4184fba0818fce221601f8",
+    "src/delete/macos.rs": "ac172d7a0b7b95d6544e3de6e9f81543a76c1735ec00bec9eafad85ecd4c931e",
+    "src/filter.rs": "989f5a8720aa4228b38e060ce0f1b5212cef802117acd83e6b60b2ac44995922",
+    "src/input.rs": "8bf0591b3802be9a508945145180bd0759c82c743a4446272542f31dfc726bdc",
+    "src/lib.rs": "4594e9d5d337f5b8a5856822df5fc664f88b08be398a0b06fc01816a473d9a16",
+    "src/main.rs": "576aabb3c7dfaa30c3cf073420131a17e62c6b01cf966a086d6146661ed673bb",
+    "src/native.rs": "41e43fd046d90159eda206935ade2988474a7257d61f0b5992214d949bef473e",
+    "src/output.rs": "8f3144015d5c51a2a59d96e76bcd1136ad4331c5ccf3f2ca42532d77ddf6292f",
+    "src/profile.rs": "02e5a91046febe494ac87e077d5436682b280e51a48d16920b2faf5fa6813b00",
+    "src/progress.rs": "3d0fe059013a391c9759f2596cb0790655dbbe0db5319a154ba6792cd5f781b2",
+    "src/scan.rs": "ada77414b5b61935d2fb6b68c203ace7e9b0916946fae956e7215cbd057bd5bb",
+    "src/snapshot.rs": "bcd243bf6d1aac99a7a9968439207cc390e106c64d1284058fb3a58dedda0969",
+    "src/ui.rs": "39633251acd6ffd742bfae4f50843b3507c636aaaf5f2a74db31f88d55a6af4f",
+    "src/ui/format.rs": "0b7e008cd0e98a526e062337ce60b0c2b287c952e851f49f2273804727e4d15e",
+    "src/ui/render.rs": "0e21bfd346aba791da532c3192be0db6133d4a823e1b24ebb6c00cb227344fb9",
+    "src/ui/review.rs": "c610f49053a2c6607273ae9d2771adaf385ec84bb51cd2c6430fa56a0762213b",
+    "src/ui/terminal.rs": "22b906ffa57bc93df50670e89abc44b770e8455617367eebf6574332afc127f6",
+    "src/ui/tests.rs": "1baa9db9e26a8c98a07f23ade5260550601107db00542c2b5823423dc61784f7",
+    "src/ui/view.rs": "dc96dc902f7fa12038d9c05e2622a29941ab8dfe50cbc5ddbdfc138613911eee"
+  },
+  "binary": "<RESEARCH_ROOT>/bench/bin/variants/rdu-0.3-final-fallback",
+  "binary_sha256": "5741f105c72f32a1f51f9a5844ddf2397837fd1ea8b8bdda53ac4ca1042b524e",
+  "binary_bytes": 1340928,
+  "build_command": [
+    "cargo",
+    "+stable",
+    "build",
+    "--release",
+    "--locked",
+    "--offline"
+  ],
+  "commands": [
+    [
+      "tests",
+      [
+        "cargo",
+        "+stable",
+        "test",
+        "--all-features",
+        "--locked",
+        "--offline"
+      ]
+    ],
+    [
+      "clippy",
+      [
+        "cargo",
+        "+stable",
+        "clippy",
+        "--all-targets",
+        "--all-features",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ]
+    ],
+    [
+      "release",
+      [
+        "cargo",
+        "+stable",
+        "build",
+        "--release",
+        "--locked",
+        "--offline"
+      ]
+    ]
+  ],
+  "build_environment": {
+    "CARGO_HOME": "<CARGO_HOME>",
+    "CARGO_TARGET_DIR": "<TEMP_PATH>",
+    "CARGO_BUILD_JOBS": "4",
+    "RUSTFLAGS": "--remap-path-prefix=<USER_HOME>=<user> --remap-path-prefix=/tmp=<build> --remap-path-prefix=/private/tmp=<build> --remap-path-prefix=<CARGO_HOME>=<cargo-cache> --remap-path-prefix=<RUSTUP_HOME>/toolchains=<toolchain> --remap-path-prefix=<RESEARCH_ROOT>=<repository> --remap-path-prefix=<PUBLICATION_ROOT>=<repository>",
+    "CARGO_ENCODED_RUSTFLAGS": null,
+    "MACOSX_DEPLOYMENT_TARGET": null
+  },
+  "rustc_vv": "rustc 1.94.1 (e408947bf 2026-03-25)\nbinary: rustc\ncommit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1\ncommit-date: 2026-03-25\nhost: x86_64-apple-darwin\nrelease: 1.94.1\nLLVM version: 21.1.8\n",
+  "cargo_version": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+  "features": "default normal release",
+  "design": "Original integrated0.3 scanner, rejected B/AB ownership complexity",
+  "timing_scope": "source equivalent to current88 final256 control; privacy-remapped executable not independently retimed",
+  "release_status": "pending final functional/security/package verification"
+}

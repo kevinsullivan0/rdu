@@ -49,6 +49,16 @@
       "original_source_commit": "ed6847f6c7600dc385bc89fd4fa7718d7bb7efc7"
     },
     {
+      "path": "bench/empty-gdu.yaml",
+      "original_sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "published_sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "original_bytes": 3,
+      "published_bytes": 3,
+      "mode": "100644",
+      "original_source_reference": "Exact helper payload in sealed final256 comparison publication bundle, bound by evidence/performance/manifest.json; portable plan provenance recorded there.",
+      "transformation": "none"
+    },
+    {
       "path": "bench/generate_next.py",
       "mode": "100644",
       "original_git_blob": "a0645122af8f9468db97b3cb77b4769e2b1c90b2",
@@ -148,6 +158,16 @@
       "original_source_commit": "ed6847f6c7600dc385bc89fd4fa7718d7bb7efc7"
     },
     {
+      "path": "bench/product_final_contract.py",
+      "original_sha256": "cd53d78f0877371f5e54771c792ca2568aa26e7779b383b53103925f69d9a7ab",
+      "published_sha256": "cd53d78f0877371f5e54771c792ca2568aa26e7779b383b53103925f69d9a7ab",
+      "original_bytes": 4268,
+      "published_bytes": 4268,
+      "mode": "100644",
+      "original_source_reference": "Exact helper payload in sealed final256 comparison publication bundle, bound by evidence/performance/manifest.json; portable plan provenance recorded there.",
+      "transformation": "none"
+    },
+    {
       "path": "bench/ratatui_frame_contract.json",
       "mode": "100644",
       "original_git_blob": "6e12454552b44d2aa57dacce1a8b1db244b35e6f",
@@ -171,14 +191,33 @@
     },
     {
       "path": "bench/retained_output.py",
+      "original_sha256": "3c31641e0d55034cb96333cd75e870f5bb9b8a8d2e990bf073e071a972d14711",
+      "published_sha256": "3c31641e0d55034cb96333cd75e870f5bb9b8a8d2e990bf073e071a972d14711",
+      "original_bytes": 5710,
+      "published_bytes": 5710,
       "mode": "100644",
-      "original_git_blob": "adc1cfcd2abe4882080d3a0643a0149687b4b37b",
-      "transformation": "none",
-      "original_sha256": "e753a028732e4f17f2646be0d34e53bc4aac81e68dd5c2e8358fa4429e240986",
-      "original_bytes": 5638,
-      "published_sha256": "e753a028732e4f17f2646be0d34e53bc4aac81e68dd5c2e8358fa4429e240986",
-      "published_bytes": 5638,
-      "original_source_commit": "ed6847f6c7600dc385bc89fd4fa7718d7bb7efc7"
+      "original_source_reference": "Exact helper payload in sealed final256 comparison publication bundle, bound by evidence/performance/manifest.json; portable plan provenance recorded there.",
+      "transformation": "none"
+    },
+    {
+      "path": "bench/retained_real.py",
+      "original_sha256": "0dbde7a3099a670b82014d3044a387a3ef5682cf19f7e9fae28dfc4a01b41b1d",
+      "published_sha256": "0dbde7a3099a670b82014d3044a387a3ef5682cf19f7e9fae28dfc4a01b41b1d",
+      "original_bytes": 6336,
+      "published_bytes": 6336,
+      "mode": "100644",
+      "original_source_reference": "Exact helper payload in sealed final256 comparison publication bundle, bound by evidence/performance/manifest.json; portable plan provenance recorded there.",
+      "transformation": "none"
+    },
+    {
+      "path": "bench/run_product_final.py",
+      "original_sha256": "1fe7e00dc0bd32f4fcdd733386514dfe128bdecdf0103f744df425e502df70e6",
+      "published_sha256": "1fe7e00dc0bd32f4fcdd733386514dfe128bdecdf0103f744df425e502df70e6",
+      "original_bytes": 10117,
+      "published_bytes": 10117,
+      "mode": "100644",
+      "original_source_reference": "Exact helper payload in sealed final256 comparison publication bundle, bound by evidence/performance/manifest.json; portable plan provenance recorded there.",
+      "transformation": "none"
     },
     {
       "path": "bench/run_retained_correctness.py",
@@ -193,14 +232,23 @@
     },
     {
       "path": "bench/runtime_observations.py",
+      "original_sha256": "f5d1a2024e3d868c9547ac747090e943d78e1a7457c6df9085058eb4578183a5",
+      "published_sha256": "f5d1a2024e3d868c9547ac747090e943d78e1a7457c6df9085058eb4578183a5",
+      "original_bytes": 2133,
+      "published_bytes": 2133,
       "mode": "100644",
-      "original_git_blob": "8c13430328c729d0a58d7520bd2f278d695f94e0",
-      "transformation": "none",
-      "original_sha256": "257a91ac39481afed300a00882cb9d8a1f8f894cd95c3bf8d33cad83fdbae70e",
-      "original_bytes": 1860,
-      "published_sha256": "257a91ac39481afed300a00882cb9d8a1f8f894cd95c3bf8d33cad83fdbae70e",
-      "published_bytes": 1860,
-      "original_source_commit": "ed6847f6c7600dc385bc89fd4fa7718d7bb7efc7"
+      "original_source_reference": "Exact helper payload in sealed final256 comparison publication bundle, bound by evidence/performance/manifest.json; portable plan provenance recorded there.",
+      "transformation": "none"
+    },
+    {
+      "path": "bench/skew_plan.py",
+      "original_sha256": "4b838f9911e3302b40cda659b1801202489c1bd0b7695b85c228f681f5407603",
+      "published_sha256": "4b838f9911e3302b40cda659b1801202489c1bd0b7695b85c228f681f5407603",
+      "original_bytes": 603,
+      "published_bytes": 603,
+      "mode": "100644",
+      "original_source_reference": "Exact helper payload in sealed final256 comparison publication bundle, bound by evidence/performance/manifest.json; portable plan provenance recorded there.",
+      "transformation": "none"
     },
     {
       "path": "bench/test_dua_tree_capability.py",
@@ -322,6 +370,16 @@
       "published_sha256": "912abddb9daa2431a0bc13f8c4361f640708cc99920c4d7e8f17544148357a06",
       "published_bytes": 26311,
       "original_source_commit": "ed6847f6c7600dc385bc89fd4fa7718d7bb7efc7"
+    },
+    {
+      "path": "bench/uneven_plan.py",
+      "original_sha256": "5c40a541254a6f096d16de1663d750ff8ff47461bd0c393ca27b199f87163b5b",
+      "published_sha256": "5c40a541254a6f096d16de1663d750ff8ff47461bd0c393ca27b199f87163b5b",
+      "original_bytes": 1221,
+      "published_bytes": 1221,
+      "mode": "100644",
+      "original_source_reference": "Exact helper payload in sealed final256 comparison publication bundle, bound by evidence/performance/manifest.json; portable plan provenance recorded there.",
+      "transformation": "none"
     },
     {
       "path": "bench/verify_binary.py",
@@ -3016,7 +3074,7 @@
     "build caches, generated fixtures, competitor binaries and historical release binaries",
     "all unselected tracked files and untracked files"
   ],
-  "documentation_status": "Final benchmark documentation and fallback security diff pending.",
+  "documentation_status": "Final performance, rejected-composition evidence, sealed Standard+fallback diff source reviews, final artifact build/functional/privacy and single SDK observation curated. Package/install/publication receipts are separate.",
   "notice_scope": "All original licenses/ copied without redaction; third-party copyright attribution retained.",
   "source_selection": {
     "base_private_source_commit": "ed6847f6c7600dc385bc89fd4fa7718d7bb7efc7",
@@ -3024,5 +3082,45 @@
     "rule": "Cargo and runtime files copy the base byte for byte except src/scan.rs restored byte for byte from restored_scanner_commit and unused src/scan/owner.rs omitted. No other runtime changes.",
     "selection_reason": "Final bounded comparison did not confirm a broad speed gain for owner architecture B over original integrated control; simpler original scanner selected.",
     "performance_limit": "Final current-control measurements cover source-equivalent scanner. Privacy-remapped final fallback executable is not separately timed."
-  }
+  },
+  "later_helper_scope": "Final benchmark helper revisions/additions are bound by evidence/performance/manifest.json and separately statically reviewed for privacy/import/syntax. They are outside the earlier sealed source scan range; they do not change runtime source.",
+  "final_artifact": {
+    "binary_sha256": "5741f105c72f32a1f51f9a5844ddf2397837fd1ea8b8bdda53ac4ca1042b524e",
+    "binary_bytes": 1340928,
+    "build_source_commit": "ea5969853f52770e627dfb60333194a182f9edc2",
+    "runtime_and_cargo_source_equals_private_control": "88dc2df52e20a8acd2bfdd722fdbffbf635ce6b4",
+    "final_artifact_independently_timed": false,
+    "machine_text_identity_to_timed_control": false,
+    "reason": "Compiler path remapping changes TEXT; source-equivalent benchmark evidence only."
+  },
+  "generated_publication_paths": [
+    ".gitignore",
+    "README.md",
+    "SECURITY.md",
+    "THIRD_PARTY.md",
+    "docs/benchmark-method.md",
+    "docs/publication.md",
+    "docs/release-packaging.md",
+    "evidence/performance/REPRODUCE.md",
+    "evidence/performance/composition-evidence.json",
+    "evidence/performance/composition-provenance.json",
+    "evidence/performance/composition-report.md",
+    "evidence/performance/manifest.json",
+    "evidence/performance/performance.json",
+    "evidence/performance/performance.md",
+    "evidence/release/binary-checks.json",
+    "evidence/release/binary-privacy.json",
+    "evidence/release/build-freeze.json",
+    "evidence/release/control-section-comparison.json",
+    "evidence/release/product-verification.json",
+    "evidence/release/sdk-usable-browser.json",
+    "evidence/release/terminal-fixtures.json",
+    "evidence/release/verification.json",
+    "evidence/security/fallback-coverage.json",
+    "evidence/security/fallback-report.md",
+    "evidence/security/provenance.json",
+    "evidence/security/standard-coverage.json",
+    "evidence/security/standard-report.md"
+  ],
+  "generated_payload_scope": "Standalone project documentation, derived performance/security/release evidence and source/publication manifests. Original/derived artifact hashes and transformations recorded in adjacent provenance files; generated content is not represented as original runtime source."
 }

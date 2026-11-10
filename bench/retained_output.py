@@ -3,8 +3,8 @@ import re
 from pathlib import PurePosixPath
 
 
-def lines(output):
-    if len(output)>65536 or not output.endswith(b'\n') or b'\r' in output or b'\x1b' in output:
+def lines(output,max_bytes=65536):
+    if len(output)>max_bytes or not output.endswith(b'\n') or b'\r' in output or b'\x1b' in output:
         raise ValueError('Output bound, line ending or terminal sequence coverage')
     try:return output.decode('utf8',errors='strict').splitlines()
     except UnicodeError as error:raise ValueError('Lossless UTF8 output coverage') from error
@@ -15,8 +15,8 @@ def insert(rows,path,size):
     rows[path]=size
 
 
-def parse_rdu_tree(output):
-    text=lines(output);rows={};markers={};order={}
+def parse_rdu_tree(output,max_bytes=65536):
+    text=lines(output,max_bytes);rows={};markers={};order={}
     if not text:raise ValueError('Missing TOTAL')
     footer=re.fullmatch(r' *([0-9]+)  TOTAL \(([0-9]+) entries, ([0-9]+) directories, ([0-9]+) errors; ([0-9]+\.[0-9]{3})s\)',text[-1])
     if not footer:raise ValueError('Malformed RDU TOTAL footer')
@@ -34,9 +34,9 @@ def parse_rdu_tree(output):
             'counts':{'files':int(footer[2]),'directories':int(footer[3]),'errors':int(footer[4])}}
 
 
-def parse_dua_tree(output,root,sentinel):
+def parse_dua_tree(output,root,sentinel,max_bytes=65536):
     rows={};order={};stack=[];roots=[];sentinel_seen=False
-    for line in lines(output):
+    for line in lines(output,max_bytes):
         match=re.fullmatch(r' *([0-9]+) b ([^\r\n\x1b]+)',line)
         if not match:raise ValueError('Malformed dua bytes/tree row')
         size=int(match[1]);display=match[2];spaces=len(display)-len(display.lstrip(' '))

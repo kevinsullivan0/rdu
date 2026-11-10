@@ -1,0 +1,54 @@
+{
+  "completeness": "complete",
+  "deferred": [],
+  "documentType": "codex-security.coverage",
+  "excludePaths": [],
+  "explicitExclusions": [
+    {
+      "pattern": "unchanged code outside delta and direct supporting controls",
+      "reason": "Prior Standard scan af5de7e9-bc10-41c6-813f-7a35f34c3c09 remains authoritative base review. No second broad audit."
+    },
+    {
+      "pattern": "runtime/dependency/advisory validation",
+      "reason": "Offline static delta review only; release coordinator owns builds/functional tests. No executable certification, external dependency source/advisory scan, fuzzing or privileged filesystem tests."
+    }
+  ],
+  "includePaths": [
+    "."
+  ],
+  "inventoryStrategy": "diff",
+  "mode": "branch_diff",
+  "openQuestions": [],
+  "resolvedDeferred": [
+    {
+      "id": "diff-file-review",
+      "reason": "All3 managed source review items reviewed, including deleted owner at base, plus README changed paragraph and minimum directly supporting controls. No plausible candidates or unresolved source gaps."
+    }
+  ],
+  "scanId": "0529f2b2-cf28-49f0-90bd-0bb6e99e1a00",
+  "schemaVersion": "1.0",
+  "surfaces": [
+    {
+      "disposition": "no_issue_found",
+      "id": "scanner-restoration",
+      "label": "Restored global scanner and removed owner scheduler",
+      "notes": "Fully reviewed immutable head src/scan.rs including new completion test, exact diff, and deleted src/scan/owner.rs at base. Unchanged native open_at remains directory-only O_NOFOLLOW. Parent hints/cache use verified fds and final directory dev/ino is rechecked; fallback component opens start at pinned root. Shared queued jobs have pinned_parent None; job.pinned_parent is taken before batch storage. Global cache bounded2*workers; only one local continuation per worker retains parent, dropped on cancelled open; prepare_local releases leaf fd before Work lock. Mutex-protected pending includes executing/queued/local jobs; completion subtracts one/adds exact all-child count, shared children enqueue and notify occur under same mutex; waiter predicate cannot observe premature zero/lost wake. Every admitted child yields Batch even on cancellation/errors, preserving contiguous IDs and incomplete status. No new content-open, mutation or deletion capability introduced (src/scan.rs:103,121,171,196,211,233,242,269,286,311,351,405,410,419,426,428,504).",
+      "riskArea": "Directory capabilities, fd lifetime, job termination and partial metadata trees"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "manifest-doc-delta",
+      "label": "Source provenance schema and README",
+      "notes": "Full structured manifests at base/head parsed and each changed row semantically compared; all273 declared published-entry hashes match immutable head. v2 names original/published hash/byte/source fields explicitly, removes unused owner module, declares original scanner restoration and preserves transformed CLI doc provenance. README single changed paragraph describes original integrated scanner. No executable code or credentials added. Managed source inventory lists3 paths; README fourth changed documentation path was additionally read from exact Git diff.",
+      "riskArea": "Publication/source binding and sensitive literals"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "supporting-controls",
+      "label": "Supporting native, session and regression contracts",
+      "notes": "Read minimum unchanged native open/stat/enumerate and deletion-session scan gates, full scheduler_contracts and owner_fd_fixture sources, plus restored completion unit test. Existing Standard base full-source/secret coverage retained independently, not rerun. Partial/error/cancelled scans still cannot mint deletion session (src/delete/macos.rs:380). Tests assert bounds, tree links/accounting, cancellation and low-fd disposable fixture behavior; no test execution claimed.",
+      "riskArea": "Changed scanner consumers and negative controls"
+    }
+  ],
+  "publication_note": "Derived coverage copy. Working-artifact receipt references omitted. Exact e591e3f..ea596985 fallback range; not a new broad repository audit or executable certification."
+}

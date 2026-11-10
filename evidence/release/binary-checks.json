@@ -1,0 +1,195 @@
+{
+  "binary_sha256": "5741f105c72f32a1f51f9a5844ddf2397837fd1ea8b8bdda53ac4ca1042b524e",
+  "binary_bytes": 1340928,
+  "checks": [
+    {
+      "check": "metadata_oracle",
+      "backend": "auto",
+      "threads": 8,
+      "soft_fd_limit": null,
+      "totals": {
+        "allocated": 1179648,
+        "apparent": 37282,
+        "files": 294,
+        "directories": 217,
+        "errors": 0
+      },
+      "passed": true
+    },
+    {
+      "check": "metadata_oracle",
+      "backend": "bulk",
+      "threads": 8,
+      "soft_fd_limit": null,
+      "totals": {
+        "allocated": 1179648,
+        "apparent": 37282,
+        "files": 294,
+        "directories": 217,
+        "errors": 0
+      },
+      "passed": true
+    },
+    {
+      "check": "metadata_oracle",
+      "backend": "portable",
+      "threads": 8,
+      "soft_fd_limit": null,
+      "totals": {
+        "allocated": 1179648,
+        "apparent": 37282,
+        "files": 294,
+        "directories": 217,
+        "errors": 0
+      },
+      "passed": true
+    },
+    {
+      "check": "metadata_oracle",
+      "backend": "auto",
+      "threads": 1,
+      "soft_fd_limit": 16,
+      "totals": {
+        "allocated": 1179648,
+        "apparent": 37282,
+        "files": 294,
+        "directories": 217,
+        "errors": 0
+      },
+      "passed": true
+    },
+    {
+      "check": "metadata_oracle",
+      "backend": "auto",
+      "threads": 8,
+      "soft_fd_limit": 48,
+      "totals": {
+        "allocated": 1179648,
+        "apparent": 37282,
+        "files": 294,
+        "directories": 217,
+        "errors": 0
+      },
+      "passed": true
+    },
+    {
+      "check": "metadata_oracle",
+      "backend": "auto",
+      "threads": 64,
+      "soft_fd_limit": 280,
+      "totals": {
+        "allocated": 1179648,
+        "apparent": 37282,
+        "files": 294,
+        "directories": 217,
+        "errors": 0
+      },
+      "passed": true
+    },
+    {
+      "check": "metadata_oracle",
+      "backend": "portable",
+      "threads": 1,
+      "soft_fd_limit": 16,
+      "totals": {
+        "allocated": 1179648,
+        "apparent": 37282,
+        "files": 294,
+        "directories": 217,
+        "errors": 0
+      },
+      "passed": true
+    },
+    {
+      "check": "metadata_oracle",
+      "backend": "portable",
+      "threads": 8,
+      "soft_fd_limit": 48,
+      "totals": {
+        "allocated": 1179648,
+        "apparent": 37282,
+        "files": 294,
+        "directories": 217,
+        "errors": 0
+      },
+      "passed": true
+    },
+    {
+      "check": "metadata_oracle",
+      "backend": "portable",
+      "threads": 64,
+      "soft_fd_limit": 280,
+      "totals": {
+        "allocated": 1179648,
+        "apparent": 37282,
+        "files": 294,
+        "directories": 217,
+        "errors": 0
+      },
+      "passed": true
+    },
+    {
+      "check": "stdout_failure",
+      "command": "help",
+      "mode": "broken_pipe",
+      "returncode": 1,
+      "passed": true
+    },
+    {
+      "check": "stdout_failure",
+      "command": "help",
+      "mode": "read_only",
+      "returncode": 1,
+      "passed": true
+    },
+    {
+      "check": "stdout_failure",
+      "command": "version",
+      "mode": "broken_pipe",
+      "returncode": 1,
+      "passed": true
+    },
+    {
+      "check": "stdout_failure",
+      "command": "version",
+      "mode": "read_only",
+      "returncode": 1,
+      "passed": true
+    },
+    {
+      "check": "stdout_failure",
+      "command": "summary",
+      "mode": "broken_pipe",
+      "returncode": 1,
+      "passed": true
+    },
+    {
+      "check": "stdout_failure",
+      "command": "summary",
+      "mode": "read_only",
+      "returncode": 1,
+      "passed": true
+    },
+    {
+      "check": "stdout_failure",
+      "command": "table",
+      "mode": "broken_pipe",
+      "returncode": 1,
+      "passed": true
+    },
+    {
+      "check": "stdout_failure",
+      "command": "table",
+      "mode": "read_only",
+      "returncode": 1,
+      "passed": true
+    },
+    {
+      "check": "partial_result_exit",
+      "returncode": 2,
+      "passed": true
+    }
+  ],
+  "fixture_stable": true,
+  "passed": true
+}

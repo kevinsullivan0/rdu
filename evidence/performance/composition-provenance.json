@@ -1,0 +1,10 @@
+{
+  "original_raw_sha256": "6854773f5ced0fea1a00170548c7812174e40108f42db6af07047f77e5c7c86f",
+  "numeric_evidence_sha256": "d07bfad32b5e690581161986939ce7c7ce29faafe78263049852423515a2fb77",
+  "original_report_sha256": "c35b4388af05ab57da7f6058547203cc6ed1874b2e7bb9e68c45dca7e3c2355a",
+  "published_report_sha256": "06be9613505c24438a43bbf7b20f93257a67a4dd093894c29575c37034ce27ed",
+  "original_report_bytes": 6585,
+  "published_report_bytes": 6305,
+  "sample_count": 80,
+  "transformation": "Retain all scalar numeric/boolean sample fields, dataset/variant labels, full numeric summaries/effects. Omit raw command paths, config/source inventories, inode identities, process/host observation text and raw output. Private original preserved. Report numeric tables retained verbatim; final interpretation replaces internal future-action paragraph and omitted links."
+}

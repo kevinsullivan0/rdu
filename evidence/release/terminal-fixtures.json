@@ -1,0 +1,20 @@
+{
+  "driver": false,
+  "checks": [
+    "navigation/filter/sort/parent identity/help/basket/resize/hostile names/NO_COLOR/read-only/refresh",
+    "termios/cursor/alternate-screen restoration: q/Ctrl-C/Ctrl-D/Escape/SIGTERM/SIGHUP",
+    "observational stage/fresh manifest/review cancel/resize blocks confirmation/typed fixture deletion/report/rescan",
+    "filtered folder: full fresh closure/count/scope warning/excluded descendant inspection; cancelled without writes",
+    "actual live counters/stop/keep partial/read-only partial/worker shutdown",
+    "single cancellable preparation: refresh and prompt quit while CHECKING; fixture unchanged",
+    "quit during loading cancels/joins scan; scan error restores terminal"
+  ],
+  "loading_seconds": 0.00707646700902842,
+  "ready_seconds": 0.009548337999149226,
+  "observed_entry_samples": [
+    0,
+    20300,
+    20380
+  ],
+  "prepare_quit_seconds": 0.09966228899429552
+}

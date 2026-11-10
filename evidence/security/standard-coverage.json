@@ -1,0 +1,103 @@
+{
+  "completeness": "complete",
+  "deferred": [],
+  "documentType": "codex-security.coverage",
+  "excludePaths": [],
+  "explicitExclusions": [
+    {
+      "pattern": "third-party dependency implementation (not vendored)",
+      "reason": "Locked Cargo dependency names/checksums and notice data reviewed; external crate implementation and fresh advisory database were not audited."
+    },
+    {
+      "pattern": "runtime/privileged validation beyond static source",
+      "reason": "No scan-owned builds, tests, PoCs, fuzzing/sanitizers, foreign-account writer, privileged mount/device, arbitrary power-loss, or broad platform/hardware execution. Separate release coordinator validation is distinct."
+    }
+  ],
+  "includePaths": [
+    "."
+  ],
+  "inventoryStrategy": "repository",
+  "inventorySummary": {
+    "credentialReviewFiles": 282,
+    "fullySecurityAuditedFiles": 84,
+    "method": "Deduplicated authorized-current-tree union of parent full-content audits and baseline/focused fully_reviewed_files; structured JSON/TOML metadata parsed and integrity checked;198 copied third-party notices classified nonimplementation after credential review.",
+    "noticeOnlyClassifiedFiles": 198,
+    "trackedFiles": 282,
+    "unclassifiedFiles": 0
+  },
+  "mode": "repository",
+  "openQuestions": [],
+  "resolvedDeferred": [
+    {
+      "id": "remaining-source-review",
+      "reason": "Independent baseline and focused helper/deletion reviews complete. Deduplicated union covers84 full-content audited source/config/documentation/helper files; remaining198 copied notice texts classified nonimplementation and included in current-tree secret review and notice integrity checks. No pending candidate or source review remains."
+    }
+  ],
+  "scanId": "af5de7e9-bc10-41c6-813f-7a35f34c3c09",
+  "schemaVersion": "1.0",
+  "surfaces": [
+    {
+      "disposition": "no_issue_found",
+      "id": "deletion-capability-capture-recovery",
+      "label": "macOS deletion capability, capture and recovery",
+      "notes": "Independent focused auditor fully reviewed src/delete.rs, src/delete/macos.rs, relevant UI binding/cancellation controls, tests/delete.rs and deletion docs. No source-backed bypass identified. Private confirmed plan, fresh full closure, source parent mode/ACL policy, local writable ownership-enforcing APFS, live pin/exclusive private-slot capture/identity verification, bottom-up nonrecursive removal, checked journal/cancellation/partial recovery reviewed. Platform foreign-UID/ACL, mount and power-loss runtime gaps retained as limitations; no execution performed.",
+      "reviewedFiles": [
+        "src/delete.rs",
+        "src/delete/macos.rs",
+        "src/ui.rs",
+        "src/ui/terminal.rs",
+        "src/ui/review.rs",
+        "tests/delete.rs",
+        "tests/filter_root_spelling.rs",
+        "docs/deletion.md",
+        "docs/next/deletion-service.md",
+        "docs/next/deletion-threat-review.md",
+        "SECURITY.md"
+      ],
+      "riskArea": "Permanent filesystem mutation"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "independent-baseline",
+      "label": "Independent baseline security audit",
+      "notes": "Independent baseline returned no validated findings. Full-content review scope and counterevidence retained in original worker artifact; credential/private-key review included all 282 current tracked files including documentation, examples, tests and copied notices. Source review is static and does not establish live secret validity or executable certification.",
+      "riskArea": "General source security and embedded credentials"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "scanner-native-owner",
+      "label": "Native metadata parsing and bounded owner scheduler",
+      "notes": "Full runtime review of src/native.rs, src/scan.rs, src/scan/owner.rs, progress/profile plus related scan/scheduler/owner tests. Checked aligned initialized native storage, checked slice/offset/length/validity/name parsing and stat fallback; metadata-only stat and directory-only O_NOFOLLOW opens; pinned-root component reopen and dev/ino checks; entry/depth caps and two OwnedFd cache slots per owner, descriptor-free jobs; registered live work, parking generation/recheck and final-zero wake; cancelled placeholders remain complete graph with explicit incomplete status; global regular-hardlink accounting and saturating totals. No candidate survived source analysis.",
+      "riskArea": "Untrusted filesystem names/metadata, FFI and resources"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "imports-cli-terminal",
+      "label": "CLI, import/export and terminal authority",
+      "notes": "Full source plus Rust tests reviewed. Explicit bounded regular-file nofollow reads, strict typed/versioned JSON and ordered rooted snapshot graph, node/name/depth limits, create-new0600 snapshot output. Imports remain descriptive read-only data. safe_text covers control/bidi/backslash/invalid bytes at display and final diagnostic boundaries. Immutable targets, preparation generation discard, cancellation/join, resize-cleared full review and single-use plan confirmation separate observation from mutation. Terminal guard restores handled state; kernel-blocking and SIGKILL limits documented.",
+      "riskArea": "Untrusted snapshots/configuration/names and UI confirmation"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "package-provenance",
+      "label": "Packaging, notices and publication provenance",
+      "notes": "Full tools/package_release.py reviewed; structured entire Cargo.lock/license inventory and source manifest checked. Current tree has282 tracked regular files and no symlink modes. All274 manifest entries match original or explicitly transformed published SHA256; all198 copied notices match inventory hashes/bytes; Cargo manifest/lock hashes match. Helper reads pinned nofollow bounded regular files, consumes immutable regular Git blobs, checks binary/freeze/lock/metadata consistency, creates new output and verifies regular-only manifest-bound archives. Operator config and output paths are trusted ordinary-user authority. This is consistency review, not signature/build equivalence or executable certification.",
+      "riskArea": "Release payload integrity and sensitive-source disclosure"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "benchmark-pty-helpers",
+      "label": "Benchmark and PTY developer helpers",
+      "notes": "Supplementary investigator reports full helper review with no validated finding, including all previously remaining9 files. Explicit argv executes operator-selected tools under ordinary user authority; mutation/deletion fixtures are owned disposable directories; ratatui real-root work requires --read-only and writable paths require OwnedFixture. Passive bounded PTY decoding never forwards child escapes to user terminal. New results do not establish runtime execution. Original full file coverage and limits are retained in managed helper result. Legacy harness raw host/path/output observations and explicit diagnostic transcripts are local operator artifacts requiring separate publication sanitization; no automatic publishing/network sink was established.",
+      "riskArea": "Operator commands, fixture mutation, output retention and terminal inputs"
+    },
+    {
+      "disposition": "not_applicable",
+      "id": "notice-data",
+      "label": "Copied notices and other risk classes",
+      "notes": "198 copied third-party license/copyright texts carry no product implementation, authentication, network listener or mutation entrypoint. Classified as notice-only, included in embedded-credential review and hash/byte integrity verification. SQL/web/SSRF/tenant-auth classes do not apply to this ordinary-user local CLI. All282 inventory files classified; no source paths deferred.",
+      "riskArea": "Nonimplementation license data; absent remote service"
+    }
+  ],
+  "publication_note": "Derived coverage copy. Working-artifact receipt references omitted; original authoritative coverage retained privately. Covers e591e3f owner-scanner snapshot, with selected original-scanner fallback reviewed separately."
+}

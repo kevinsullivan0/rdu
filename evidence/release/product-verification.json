@@ -1,0 +1,9 @@
+{
+  "source_commit": "ea5969853f52770e627dfb60333194a182f9edc2",
+  "binary_sha256": "5741f105c72f32a1f51f9a5844ddf2397837fd1ea8b8bdda53ac4ca1042b524e",
+  "binary_bytes": 1340928,
+  "owned_binary_checks": true,
+  "owned_full_terminal_and_deletion_checks": true,
+  "fixture_policy": "Only script-created disposable /tmp fixtures; no real user data deleted",
+  "performance_claim": false
+}

@@ -22,7 +22,10 @@ def capture_runtime_observations(deadline):
                 item.update(returncode=child.returncode,stdout=child.stdout[:4096].decode('utf8','backslashreplace'),
                             stderr=child.stderr[:1024].decode('utf8','backslashreplace'))
                 item['truncated']=len(child.stdout)>4096 or len(child.stderr)>1024
-                if child.returncode==0 and not item['truncated']:item['status']='observed'
+                if child.returncode==0 and not item['truncated']:
+                    if label=='thermal_status' and any(line.startswith(b'Error:') for line in child.stdout.splitlines()):
+                        item['reason']='OS query reports unavailable thermal/performance/CPU power status despite exit zero'
+                    else:item['status']='observed'
                 else:item['reason']='nonzero exit or output bound; report is incomplete'
             except FileNotFoundError:item['reason']='declared OS command unavailable'
             except subprocess.TimeoutExpired:item['reason']='two-second/remaining deadline; owned observer child killed by subprocess.run'

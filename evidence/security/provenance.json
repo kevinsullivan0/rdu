@@ -1,0 +1,48 @@
+{
+  "format": "rdu-security-publication-provenance-v1",
+  "standard_scan_id": "af5de7e9-bc10-41c6-813f-7a35f34c3c09",
+  "standard_reviewed_commit": "e591e3f1992fef70039dc5ea9b578c84d6aa3c93",
+  "authority": "Original sealed Codex Security artifacts remain unchanged in private local storage. These are transformed publication copies, not byte-identical authoritative originals. Hashes identify original/published bytes; they are not audit-service signatures.",
+  "artifacts": [
+    {
+      "published_path": "evidence/security/standard-report.md",
+      "original_artifact": "report.md",
+      "original_sha256": "e47d6eff8ee544311031f1719501ee74cd5372ee2f514e8f4db6e7fff3032c41",
+      "published_sha256": "195c1bdfff51cb5f1fa4e3d20a35194f640798dbd0240056595e6c78e57aaac7",
+      "original_bytes": 19748,
+      "published_bytes": 19547,
+      "transformation": "Private path/identity placeholder replacement; omit scan-context, internal orchestration capability/token discussion and working-artifact references. Add explicit derived-copy and superseded-scanner scope notice. Preserve source review conclusions, findings, threat boundaries and runtime/platform limitations."
+    },
+    {
+      "published_path": "evidence/security/standard-coverage.json",
+      "original_artifact": "coverage.json",
+      "original_sha256": "3d7340dfb76a81acf72c396b6f34460c6aac1ed8b4d21cfe0520188b7e13a107",
+      "published_sha256": "1e2472d1af97a3d55c45b264553db5c885120bc488b82ab003552285356af374",
+      "original_bytes": 8275,
+      "published_bytes": 8202,
+      "transformation": "Omit working-artifact receiptRefs and add derived-copy/superseded-scanner scope notice; preserve all numeric coverage counts, security dispositions, exclusions and limitations."
+    },
+    {
+      "published_path": "evidence/security/fallback-report.md",
+      "original_artifact": "report.md",
+      "original_sha256": "bf634d51b88e14556daaca2fb9dd38aab86b26d4bb9ea4acc4363619eac39822",
+      "published_sha256": "c2325480255c48f09095d3597126c036c4133a457ebd14a2c34d0cde659de959",
+      "original_bytes": 16462,
+      "published_bytes": 16445,
+      "transformation": "Private path/identity placeholder replacement; omit scan-context and internal orchestration/capability/token statements while explicitly retaining later-docs scope exclusion; add derived-copy/exact-range notice. Security findings, boundaries and limitations preserved."
+    },
+    {
+      "published_path": "evidence/security/fallback-coverage.json",
+      "original_artifact": "coverage.json",
+      "original_sha256": "bec98a3d282c2326054aa082f43769095a6ffca3c732ab55a3f11b90804b6a31",
+      "published_sha256": "37f921db09fcae44047fdb858d752c5c4f295c99e00f7ac18170cf5a20e7a181",
+      "original_bytes": 4074,
+      "published_bytes": 4194,
+      "transformation": "Omit working-artifact receiptRefs and add derived-copy/exact-range notice; preserve findings, dispositions, scope and exclusions."
+    }
+  ],
+  "fallback_diff_scan_id": "0529f2b2-cf28-49f0-90bd-0bb6e99e1a00",
+  "fallback_reviewed_base": "e591e3f1992fef70039dc5ea9b578c84d6aa3c93",
+  "fallback_reviewed_head": "ea5969853f52770e627dfb60333194a182f9edc2",
+  "later_edits_scope": "Only source/documentation in the exact sealed scopes was reviewed. Later publication result evidence/documentation is separately curated; no executable, dependency/advisory or platform certification."
+}

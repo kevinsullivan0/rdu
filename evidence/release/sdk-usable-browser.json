@@ -1,0 +1,123 @@
+{
+  "dataset": "full-sdk",
+  "observations": 1,
+  "not_a_comparative_speed_estimate": true,
+  "oracles_stable": true,
+  "exact_cli_source_equivalent_evidence": "product-final-03-current-fallback-contrasts.json",
+  "structural_evidence": "full source-bound tests + owned binary suite; UI checks rounded total/counts, not hidden bytes/offscreen nodes",
+  "sample": {
+    "first_complete_loading_seconds": 0.014253918998292647,
+    "first_positive_counter_seconds": 0.11445378098869696,
+    "live_progress_three_updates_observable": false,
+    "live_progress_observation": "too_short_or_unobserved",
+    "active_progress_samples": [
+      {
+        "seconds": 0.11445378098869696,
+        "entries": 17830,
+        "files": 10825
+      }
+    ],
+    "first_usable_browser_seconds": 0.2096547299879603,
+    "harmless_j_response_seconds": 0.0004618859966285527,
+    "harmless_k_response_seconds": 0.00043437498970888555,
+    "navigation_round_trip_validated": true,
+    "formatted_total": "300.4 MiB",
+    "final_counts": {
+      "files": 39757,
+      "directories": 9585,
+      "errors": 0
+    },
+    "hidden_exact_bytes_verified_by_screen": false,
+    "endpoint_valid": true,
+    "wall_to_exit_seconds": 0.25590844798716716,
+    "ready_to_q_seconds": 0.0026211670046905056,
+    "q_to_exit_seconds": 0.04363255099451635,
+    "binding": {
+      "source_commit": "ea5969853f52770e627dfb60333194a182f9edc2",
+      "runtime_and_cargo_sha256": {
+        "Cargo.lock": "f42af0b608508feb2de7b3127f586355502a17f3707c3379c5efd38fa3c38399",
+        "Cargo.toml": "bd3a411ad6785f80b5c3f407deaaed1557a2d0d26bf24ad5819c2288fb07ea22",
+        "src/cli.rs": "bc4120ce8508efd7428c266e54c450ecb997a89af83062bb934d7fec4766c80e",
+        "src/cli/config.rs": "3e6a29d92d7a0f17cbe45be9482b0d4ca4f2772be953528db3eb09a540249a4c",
+        "src/delete.rs": "e170f386906efa482a824629e023fdbcaacd98349c4184fba0818fce221601f8",
+        "src/delete/macos.rs": "ac172d7a0b7b95d6544e3de6e9f81543a76c1735ec00bec9eafad85ecd4c931e",
+        "src/filter.rs": "989f5a8720aa4228b38e060ce0f1b5212cef802117acd83e6b60b2ac44995922",
+        "src/input.rs": "8bf0591b3802be9a508945145180bd0759c82c743a4446272542f31dfc726bdc",
+        "src/lib.rs": "4594e9d5d337f5b8a5856822df5fc664f88b08be398a0b06fc01816a473d9a16",
+        "src/main.rs": "576aabb3c7dfaa30c3cf073420131a17e62c6b01cf966a086d6146661ed673bb",
+        "src/native.rs": "41e43fd046d90159eda206935ade2988474a7257d61f0b5992214d949bef473e",
+        "src/output.rs": "8f3144015d5c51a2a59d96e76bcd1136ad4331c5ccf3f2ca42532d77ddf6292f",
+        "src/profile.rs": "02e5a91046febe494ac87e077d5436682b280e51a48d16920b2faf5fa6813b00",
+        "src/progress.rs": "3d0fe059013a391c9759f2596cb0790655dbbe0db5319a154ba6792cd5f781b2",
+        "src/scan.rs": "ada77414b5b61935d2fb6b68c203ace7e9b0916946fae956e7215cbd057bd5bb",
+        "src/snapshot.rs": "bcd243bf6d1aac99a7a9968439207cc390e106c64d1284058fb3a58dedda0969",
+        "src/ui.rs": "39633251acd6ffd742bfae4f50843b3507c636aaaf5f2a74db31f88d55a6af4f",
+        "src/ui/format.rs": "0b7e008cd0e98a526e062337ce60b0c2b287c952e851f49f2273804727e4d15e",
+        "src/ui/render.rs": "0e21bfd346aba791da532c3192be0db6133d4a823e1b24ebb6c00cb227344fb9",
+        "src/ui/review.rs": "c610f49053a2c6607273ae9d2771adaf385ec84bb51cd2c6430fa56a0762213b",
+        "src/ui/terminal.rs": "22b906ffa57bc93df50670e89abc44b770e8455617367eebf6574332afc127f6",
+        "src/ui/tests.rs": "1baa9db9e26a8c98a07f23ade5260550601107db00542c2b5823423dc61784f7",
+        "src/ui/view.rs": "dc96dc902f7fa12038d9c05e2622a29941ab8dfe50cbc5ddbdfc138613911eee"
+      },
+      "binary_sha256": "5741f105c72f32a1f51f9a5844ddf2397837fd1ea8b8bdda53ac4ca1042b524e",
+      "binary_bytes": 1340928,
+      "renderer_map_sha256": "a3cab27acf6ec6d9fa7bdcb6d82ad8d59b169f37dc94a68845027d0381829dfc",
+      "framework_sha256": {
+        "ratatui_readiness.py": "de2fab787742918f3104ab864ec97fde6e65e83149e6a94b645f6aec30169404",
+        "vt_screen.py": "2ca7a244159a28476168237721b89e1996355cf6c24b180dafa0de0ad4204fa0"
+      },
+      "frame_contract_sha256": "5591e5fc3b4c5f487b9263edcd17130ae7df898cc11d2aced72988db1568fd8b"
+    },
+    "read_only": true,
+    "session_timeout_seconds": 10,
+    "pty_rows": 40,
+    "pty_columns": 160,
+    "generated_terminal_replies": 0,
+    "received_bytes": 9834,
+    "received_sha256": "3689ae87560c24645546fbd04abc375a50a0d73d42128392c8dc64a059c048f7",
+    "completed_draws": 5,
+    "terminal_queries_seen": 0,
+    "terminal": {
+      "termios_valid_fd_observed": true,
+      "restored": true,
+      "child_preexec_session_foreground_proof": true,
+      "parent_cross_session_queries": "not_required_or_performed",
+      "raw_at_ready": true,
+      "observations": {
+        "master": {
+          "before_available": true,
+          "after_available": true,
+          "equal": true
+        },
+        "slave": {
+          "before_available": true,
+          "after_available": false,
+          "equal": null,
+          "before_errno": null,
+          "after_errno": 25
+        }
+      },
+      "cursor_visible": true,
+      "alt_enter_seen": true,
+      "alt_leave_seen": true,
+      "alt_screen_active": false
+    },
+    "inputs_written": [
+      "j",
+      "k",
+      "q"
+    ],
+    "returncode": 0,
+    "resources": {
+      "user_seconds": 0.126905,
+      "system_seconds": 0.8623679999999999,
+      "max_rss_bytes": 19128320,
+      "minor_faults": 5530,
+      "major_faults": 14,
+      "block_input": 0,
+      "block_output": 0,
+      "voluntary_switches": 7,
+      "involuntary_switches": 8637
+    }
+  }
+}
