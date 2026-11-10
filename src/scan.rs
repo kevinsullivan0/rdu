@@ -1,17 +1,13 @@
 use crate::native::{self, Meta};
-mod owner;
 pub use crate::progress::{ScanPhase, ScanProgress, ScanSnapshot};
 use std::{
     collections::{HashSet, VecDeque},
     ffi::{CString, OsString},
     io,
-    os::{
-        fd::{AsRawFd, OwnedFd},
-        unix::ffi::OsStrExt,
-    },
+    os::{fd::AsRawFd, unix::ffi::OsStrExt},
     path::{Component, Path, PathBuf},
     sync::{
-        Arc,
+        Arc, Condvar, Mutex,
         atomic::{AtomicUsize, Ordering},
     },
     time::{Duration, Instant},
@@ -107,30 +103,31 @@ struct Job {
     path: PathBuf,
     expected: Meta,
     depth: usize,
+    pinned_parent: Option<Arc<std::os::fd::OwnedFd>>,
 }
-#[derive(Default)]
-struct CapabilityCache {
-    slots: VecDeque<(usize, OwnedFd)>,
-}
-impl CapabilityCache {
-    fn parent(&mut self, id: usize) -> Option<&OwnedFd> {
-        let at = self.slots.iter().position(|(key, _)| *key == id)?;
-        let item = self.slots.remove(at).unwrap();
-        self.slots.push_back(item);
-        Some(&self.slots.back().unwrap().1)
-    }
-    fn retain(&mut self, id: usize, fd: OwnedFd) {
-        if self.slots.len() == 2 {
-            self.slots.pop_front();
-        }
-        self.slots.push_back((id, fd));
-    }
+struct Work {
+    queue: VecDeque<Job>,
+    pending: usize,
 }
 struct Batch {
     job: Job,
     entries: Vec<(Entry, Option<(u64, u64)>)>,
     own: Meta,
     errors: u64,
+}
+
+// Consume the current directory capability before entering shared completion.
+// A leaf drops its final Arc here; one local child keeps a verified parent.
+fn prepare_local(
+    children: &mut Vec<Job>,
+    scanned_fd: Option<Arc<std::os::fd::OwnedFd>>,
+) -> (usize, Option<Job>) {
+    let child_count = children.len();
+    let local = children.pop().map(|mut child| {
+        child.pinned_parent = scanned_fd;
+        child
+    });
+    (child_count, local)
 }
 
 pub fn scan(path: &Path, options: &Options) -> io::Result<Tree> {
@@ -169,25 +166,59 @@ pub fn scan(path: &Path, options: &Options) -> io::Result<Tree> {
         path: PathBuf::new(),
         expected: root_meta,
         depth: 0,
+        pinned_parent: None,
     };
-    let scheduler = owner::Scheduler::new(options.threads, initial);
+    let work = Mutex::new(Work {
+        queue: VecDeque::from([initial]),
+        pending: 1,
+    });
+    let ready = Condvar::new();
+    let batches = Mutex::new(Vec::new());
+    // Pin a bounded number of previously verified directories. Cached handles
+    // refer to the originally observed directory even if it is later renamed.
+    // Queued jobs own no descriptors, so width cannot exhaust the fd limit.
+    let cache = Mutex::new(VecDeque::<(usize, Arc<std::os::fd::OwnedFd>)>::new());
     let next_id = AtomicUsize::new(1);
     let count = AtomicUsize::new(1);
-    let mut batches = std::thread::scope(|scope| {
-        let mut workers = Vec::with_capacity(options.threads);
-        for worker in 0..options.threads {
+    std::thread::scope(|scope| {
+        for _ in 0..options.threads {
             let root = &root;
             let absolute = &absolute;
-            let scheduler = &scheduler;
+            let work = &work;
+            let ready = &ready;
+            let batches = &batches;
             let next_id = &next_id;
             let count = &count;
-            workers.push(scope.spawn(move || {
+            let cache = &cache;
+            scope.spawn(move || {
                 #[cfg(feature = "profile")]
                 let _worker = crate::profile::Worker::start();
-                let mut local = VecDeque::new();
-                let mut cache = CapabilityCache::default();
-                let mut batches = Vec::new();
-                while let Some(job) = scheduler.acquire(worker, &mut local) {
+                let mut local: Option<Job> = None;
+                loop {
+                    let mut job = if let Some(job) = local.take() {
+                        job
+                    } else {
+                        let mut w = {
+                            #[cfg(feature = "profile")]
+                            let _timer =
+                                crate::profile::Timer::new(crate::profile::Event::WorkLock);
+                            work.lock().unwrap()
+                        };
+                        loop {
+                            if let Some(j) = w.queue.pop_back() {
+                                break j;
+                            }
+                            if w.pending == 0 {
+                                return;
+                            }
+                            w = {
+                                #[cfg(feature = "profile")]
+                                let _timer =
+                                    crate::profile::Timer::new(crate::profile::Event::Wait);
+                                ready.wait(w).unwrap()
+                            };
+                        }
+                    };
                     let mut children = Vec::new();
                     let progress = options.progress.as_deref();
                     if let Some(progress) = progress {
@@ -199,6 +230,7 @@ pub fn scan(path: &Path, options: &Options) -> io::Result<Tree> {
                     let mut errors = 0;
                     let mut own = job.expected;
                     let mut scanned_fd = None;
+                    let parent_hint = job.pinned_parent.take();
                     let opened = (|| {
                         if options.is_cancelled() {
                             return Err(io::Error::new(
@@ -207,14 +239,20 @@ pub fn scan(path: &Path, options: &Options) -> io::Result<Tree> {
                             ));
                         }
                         // Every component is opened independently with O_NOFOLLOW; queued path replacements cannot traverse a symlink.
-                        let parent = job.parent.and_then(|id| {
-                            if id == 0 {
-                                Some(root)
-                            } else {
-                                cache.parent(id)
-                            }
+                        let parent_fd = parent_hint.or_else(|| {
+                            job.parent.and_then(|id| {
+                                #[cfg(feature = "profile")]
+                                let _timer =
+                                    crate::profile::Timer::new(crate::profile::Event::CacheLock);
+                                let mut c = cache.lock().unwrap();
+                                let index = c.iter().position(|(key, _)| *key == id)?;
+                                let item = c.remove(index)?;
+                                let fd = item.1.clone();
+                                c.push_back(item);
+                                Some(fd)
+                            })
                         });
-                        let fd = if let Some(parent) = parent {
+                        let fd = if let Some(parent) = parent_fd {
                             #[cfg(feature = "profile")]
                             crate::profile::count(crate::profile::Event::CacheHit);
                             let name = CString::new(job.name.as_bytes()).map_err(|_| {
@@ -252,11 +290,12 @@ pub fn scan(path: &Path, options: &Options) -> io::Result<Tree> {
                             ));
                         }
                         own = m;
-                        Ok(fd)
+                        Ok(Arc::new(fd))
                     })();
                     match opened {
                         Err(_) => errors += 1,
                         Ok(fd) => {
+                            scanned_fd = Some(fd.clone());
                             let bulk = options.backend != Backend::Portable;
                             let delivered = std::cell::Cell::new(0usize);
                             let mut visit = |raw: native::Raw| {
@@ -312,7 +351,6 @@ pub fn scan(path: &Path, options: &Options) -> io::Result<Tree> {
                                     } else {
                                         let id = next_id.fetch_add(1, Ordering::Relaxed);
                                         entry.child = Some(id);
-                                        scheduler.register(1);
                                         children.push(Job {
                                             id,
                                             parent: Some(job.id),
@@ -320,6 +358,7 @@ pub fn scan(path: &Path, options: &Options) -> io::Result<Tree> {
                                             path: job.path.join(&entry.name),
                                             expected: raw.meta,
                                             depth: job.depth + 1,
+                                            pinned_parent: None,
                                         });
                                     }
                                 }
@@ -342,7 +381,6 @@ pub fn scan(path: &Path, options: &Options) -> io::Result<Tree> {
                                 Ok(n) => errors += n,
                                 Err(_) => errors += 1,
                             }
-                            scanned_fd = Some(fd);
                         }
                     }
                     if let Some(progress) = progress {
@@ -354,36 +392,51 @@ pub fn scan(path: &Path, options: &Options) -> io::Result<Tree> {
                         progress.completed.fetch_add(1, Ordering::Relaxed);
                         progress.active.fetch_sub(1, Ordering::Relaxed);
                     }
-                    // Parent zero already has the immutable pinned root capability. Other
-                    // reused parents occupy at most two owner-only slots, never a queued job.
+                    // Only parents of discovered child jobs can be reused.
+                    // Delay cache admission until enumeration identifies them;
+                    // leaf directories must not evict useful parent handles.
                     if !children.is_empty()
-                        && job.id != 0
-                        && let Some(fd) = scanned_fd.take()
+                        && let Some(fd) = &scanned_fd
                     {
-                        cache.retain(job.id, fd);
+                        #[cfg(feature = "profile")]
+                        let _timer = crate::profile::Timer::new(crate::profile::Event::CacheLock);
+                        let mut c = cache.lock().unwrap();
+                        c.push_back((job.id, fd.clone()));
+                        while c.len() > options.threads * 2 {
+                            c.pop_front();
+                        }
                     }
-                    drop(scanned_fd);
-                    batches.push(Batch {
-                        job,
-                        entries,
-                        own,
-                        errors,
-                    });
-                    scheduler.finish(worker, &mut local, children);
+                    {
+                        #[cfg(feature = "profile")]
+                        let _timer = crate::profile::Timer::new(crate::profile::Event::ResultLock);
+                        batches.lock().unwrap().push(Batch {
+                            job,
+                            entries,
+                            own,
+                            errors,
+                        });
+                    }
+                    let (child_count, continuation) = prepare_local(&mut children, scanned_fd);
+                    local = continuation;
+                    let mut w = {
+                        #[cfg(feature = "profile")]
+                        let _timer = crate::profile::Timer::new(crate::profile::Event::WorkLock);
+                        work.lock().unwrap()
+                    };
+                    w.pending = w.pending - 1 + child_count;
+                    // Shared queued jobs remain descriptor-free.
+                    w.queue.extend(children);
+                    ready.notify_all();
                 }
-                batches
-            }));
+            });
         }
-        workers
-            .into_iter()
-            .flat_map(|worker| worker.join().unwrap())
-            .collect::<Vec<_>>()
     });
     if let Some(progress) = &options.progress {
         progress.accounting();
     }
     #[cfg(feature = "profile")]
     let _aggregate_timer = crate::profile::Timer::new(crate::profile::Event::Aggregation);
+    let mut batches = batches.into_inner().unwrap();
     batches.sort_unstable_by_key(|b| b.job.id);
     let mut dirs = Vec::with_capacity(batches.len());
     let mut seen = HashSet::new();
@@ -460,19 +513,65 @@ pub fn scan(path: &Path, options: &Options) -> io::Result<Tree> {
 #[cfg(test)]
 mod completion_tests {
     use super::*;
+    use std::os::fd::RawFd;
+
     #[test]
-    fn private_capability_cache_has_two_slots_and_recency() {
-        let fixture = tempfile::tempdir().unwrap();
-        let path = CString::new(fixture.path().as_os_str().as_bytes()).unwrap();
-        let mut cache = CapabilityCache::default();
-        for id in [1, 2] {
-            cache.retain(id, native::open_at(libc::AT_FDCWD, &path).unwrap());
+    fn continuation_preparation_releases_leaf_last_owner_and_preserves_child_count() {
+        const CHILD: &str = "RDU_LEAF_CLOSE_TEST_CHILD";
+        if std::env::var_os(CHILD).is_none() {
+            let output = std::process::Command::new(std::env::current_exe().unwrap())
+                .args(["--exact", "scan::completion_tests::continuation_preparation_releases_leaf_last_owner_and_preserves_child_count", "--test-threads=1"])
+                .env(CHILD, "1").output().unwrap();
+            assert!(
+                output.status.success(),
+                "{}{}",
+                String::from_utf8_lossy(&output.stdout),
+                String::from_utf8_lossy(&output.stderr)
+            );
+            return;
         }
-        assert!(cache.parent(1).is_some());
-        cache.retain(3, native::open_at(libc::AT_FDCWD, &path).unwrap());
-        assert_eq!(cache.slots.len(), 2);
-        assert!(cache.parent(2).is_none());
-        assert!(cache.parent(1).is_some());
-        assert!(cache.parent(3).is_some());
+        fn opened(path: &Path) -> (Arc<std::os::fd::OwnedFd>, RawFd) {
+            let name = CString::new(path.as_os_str().as_bytes()).unwrap();
+            let fd = Arc::new(native::open_at(libc::AT_FDCWD, &name).unwrap());
+            let raw = fd.as_raw_fd();
+            (fd, raw)
+        }
+        let fixture = tempfile::tempdir().unwrap();
+        let (fd, raw) = opened(fixture.path());
+        assert_eq!(Arc::strong_count(&fd), 1);
+        let (count, local) = prepare_local(&mut Vec::new(), Some(fd));
+        assert_eq!(count, 0);
+        assert!(local.is_none());
+        assert_eq!(
+            native::stat_fd(raw).unwrap_err().raw_os_error(),
+            Some(libc::EBADF)
+        );
+
+        let (fd, raw) = opened(fixture.path());
+        let expected = native::stat_fd(raw).unwrap();
+        let child = |id| Job {
+            id,
+            parent: Some(0),
+            name: id.to_string().into(),
+            path: PathBuf::from(id.to_string()),
+            expected,
+            depth: 1,
+            pinned_parent: None,
+        };
+        let mut children = vec![child(1), child(2)];
+        let (count, local) = prepare_local(&mut children, Some(fd));
+        assert_eq!(count, 2);
+        assert_eq!(children.len(), 1);
+        assert_eq!(children[0].id, 1);
+        assert!(children[0].pinned_parent.is_none());
+        let local = local.unwrap();
+        assert_eq!(local.id, 2);
+        assert_eq!(Arc::strong_count(local.pinned_parent.as_ref().unwrap()), 1);
+        assert!(native::stat_fd(raw).is_ok());
+        drop(local);
+        assert_eq!(
+            native::stat_fd(raw).unwrap_err().raw_os_error(),
+            Some(libc::EBADF)
+        );
     }
 }
