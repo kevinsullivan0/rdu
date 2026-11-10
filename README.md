@@ -4,6 +4,8 @@ RDU 0.3.0 is a Rust disk usage browser for macOS. Its Ratatui interface provides
 
 RDU is currently an experimental personal tool. Intermittent runtime errors are tracked in [issue #1](https://github.com/kevinsullivan0/rdu/issues/1); investigation is deferred.
 
+RDU is inspired by [GDU](https://github.com/dundee/gdu).
+
 ## Speed
 
 Across four warm-cache workloads on one Intel Mac using APFS, an RDU build with the delivered scanner's source was **1.65–3.28× faster than GDU 5.39.0** in the tested correct full-tree, 16-worker mode. These whole-command timings include retained-tree construction, accounting, output and shutdown.
