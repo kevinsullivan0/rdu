@@ -1,0 +1,30 @@
+[package]
+name = "rdu"
+version = "0.3.0"
+edition = "2024"
+rust-version = "1.88"
+license = "MIT"
+description = "Disk usage browser with bulk macOS metadata scanning and staged deletion"
+
+[features]
+profile = []
+
+[[example]]
+name = "profile_scan"
+required-features = ["profile"]
+
+[dependencies]
+serde = { version = "=1.0.229", features = ["derive"] }
+regex-lite = "=0.1.8"
+ratatui = { version = "=0.30.2", default-features = false, features = ["std", "crossterm_0_29", "layout-cache"] }
+libc = "0.2.191"
+serde_json = "1.0.149"
+
+[dev-dependencies]
+tempfile = "3.27.0"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+panic = "unwind"
+strip = true

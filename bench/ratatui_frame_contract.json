@@ -1,0 +1,85 @@
+{
+  "format": "rdu-ratatui-frame-contract-v1",
+  "source_reference": "88dc2df52e20a8acd2bfdd722fdbffbf635ce6b4",
+  "geometry": {
+    "rows": 40,
+    "columns": 160
+  },
+  "term": "xterm-256color",
+  "locale": "C",
+  "frame_end_hex": "1b5b306d1b5b3f32356c",
+  "frame_boundary": "Ratatui apply_buffer_with_cursor(None) queues diff ending SGR0 then calls Crossterm execute!(Hide), which writes CSI?25l and flushes; no synchronized-output mode in this frozen renderer. Setup Hide is not a draw.",
+  "approved_renderer_map_sha256": [
+    "a3cab27acf6ec6d9fa7bdcb6d82ad8d59b169f37dc94a68845027d0381829dfc",
+    "e261188851c8e05f553d9a15f5cda53aeba8ed460b759f90416f4790a7ea7d7c"
+  ],
+  "baseline_renderer_sha256": {
+    "src/ui.rs": "39633251acd6ffd742bfae4f50843b3507c636aaaf5f2a74db31f88d55a6af4f",
+    "src/ui/terminal.rs": "22b906ffa57bc93df50670e89abc44b770e8455617367eebf6574332afc127f6",
+    "src/ui/render.rs": "0e21bfd346aba791da532c3192be0db6133d4a823e1b24ebb6c00cb227344fb9",
+    "src/ui/format.rs": "0b7e008cd0e98a526e062337ce60b0c2b287c952e851f49f2273804727e4d15e",
+    "src/ui/view.rs": "dc96dc902f7fa12038d9c05e2622a29941ab8dfe50cbc5ddbdfc138613911eee"
+  },
+  "dependency_packages": [
+    {
+      "name": "crossterm",
+      "version": "0.29.0",
+      "checksum": "d8b9f2e4c67f833b660cdb0a3523065869fb35570177239812ed4c905aeff87b"
+    },
+    {
+      "name": "ratatui",
+      "version": "0.30.2",
+      "checksum": "3274ba0a2c5e1bcad2a2005d20f4dc59dad26b2eb0940fb094500dba4099d57d"
+    },
+    {
+      "name": "ratatui-core",
+      "version": "0.1.2",
+      "checksum": "cbb175c433c8e28a809d1f5773a2ae96e68c0ce40db865cbab1020bf33ae479c"
+    },
+    {
+      "name": "ratatui-crossterm",
+      "version": "0.1.2",
+      "checksum": "567584a3b0e6a8203c23de40b4861497266725eb5363dbfd18a1edd603cca9f0"
+    }
+  ],
+  "dependency_sources": [
+    {
+      "package_directory": "ratatui-core-0.1.2",
+      "path": "src/terminal/render.rs",
+      "sha256": "56e9393898cba07c939fa5ad61a3608c1650d8f454c8f02a78d7680461ff034c"
+    },
+    {
+      "package_directory": "ratatui-core-0.1.2",
+      "path": "src/terminal/cursor.rs",
+      "sha256": "5c9ee03ead4f6050e1544a28fbc62f1ee2eb51d3385d350b58f34ce65702abdc"
+    },
+    {
+      "package_directory": "ratatui-crossterm-0.1.2",
+      "path": "src/lib.rs",
+      "sha256": "0d6ad3a95052036a161998a4411dd2921b528212155762efdfdde9cd335baa7d"
+    },
+    {
+      "package_directory": "crossterm-0.29.0",
+      "path": "src/cursor.rs",
+      "sha256": "0d4ed77fca1b318d0c954cc01fb6694d72b0fa3e09bc24dd88b69ab565616007"
+    },
+    {
+      "package_directory": "crossterm-0.29.0",
+      "path": "src/command.rs",
+      "sha256": "0cefa31bc00f5e1f11fdae16c6031fe46d397bb8c1990cf55dc3b9e83d29e3ce"
+    }
+  ],
+  "unobserved_live_progress": "null milestones/too_short_or_unobserved, never fabricated",
+  "readiness": "first complete root frame, accepted only retrospectively after fresh complete j then k responses",
+  "cleanup": "q then wait4; valid slave FD termios equality excluding Darwin PENDIN, cursor visible, alternate screen left",
+  "privacy": "frames/path tokens memory-only; scalar receipts only; no generated terminal replies",
+  "renderer_reviews": [
+    {
+      "variant": "architecture-a",
+      "source_commit": "a83db955e4b91a9f167895471588b7a31b1385c4",
+      "renderer_map_sha256": "e261188851c8e05f553d9a15f5cda53aeba8ed460b759f90416f4790a7ea7d7c",
+      "review_receipt": "evidence/next/ui-renderer-reviews/architecture-a.json",
+      "scope": "explicit parent-approved name/child accessor adaptation only; terminal protocol, formatting, layouts and key semantics unchanged"
+    }
+  ]
+}
